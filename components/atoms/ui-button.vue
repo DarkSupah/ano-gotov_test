@@ -49,7 +49,8 @@ const props = withDefaults(defineProps<Props>(), {
   loading: false,
   disabled: false,
 
-  variant: "primary",
+  variant: "filled",
+  color: "primary",
   type: "button",
 });
 
@@ -88,6 +89,8 @@ const handleClick = (event): void => {
 
 <style lang="scss" scoped>
 .ui-button {
+  $this: &;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,12 +105,16 @@ const handleClick = (event): void => {
 
   box-sizing: border-box;
 
+  font-size: var(--button-font-size, 14px);
+  line-height: var(--button-line-height, 16.8px);
+  font-weight: var(--button-font-weight, 500);
+
   &__icon {
     --icon-size: var(--button-icon-size);
   }
 
   &__content {
-    @include h6;
+    display: var(--button-content-display);
   }
 
   &_filled {

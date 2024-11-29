@@ -3,23 +3,23 @@
     <app-logo />
 
     <nav class="app-header__controls">
-      <ui-button href="tel:+74994447675">
+      <ui-button href="tel:+74994447675" variant="link">
         <template #icon>
           <icon name="icon-phone" />
         </template>
 
-        <template #default>
-          <span class="mobile-up"> +7 499 444-76-75 </span>
-        </template>
+        <template #default> +7 499 444-76-75</template>
       </ui-button>
 
-      <ui-button @click="handleExit">
+      <ui-button class="mobile-up" href="https://google.com" variant="link">
+        Вернуться на портал
+      </ui-button>
+
+      <ui-button variant="link" @click="handleExit">
         <template #icon>
           <icon name="icon-exit" />
         </template>
-        <template #default>
-          <span class="mobile-up"> Выйти </span>
-        </template>
+        <template #default> Выйти</template>
       </ui-button>
     </nav>
   </header>
@@ -57,8 +57,17 @@ const handleExit = () => {
 
   &__controls {
     --button-icon-size: 24px;
+    --button-padding: 0;
+    --button-content-display: none;
+
+    @include breadcrumb("button", true);
 
     display: flex;
+    align-items: center;
+
+    @include mobile-up {
+      --button-content-display: initial;
+    }
 
     & > *:not(:last-child) {
       margin-right: 24px;

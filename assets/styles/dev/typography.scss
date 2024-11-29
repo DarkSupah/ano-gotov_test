@@ -39,3 +39,7 @@
 @mixin txt-s-m($namespace: null, $onlyVars: false) {
   @include font(12px, 500, 12px, $namespace, $onlyVars);
 }
+
+@mixin breadcrumb($namespace: null, $onlyVars: false) {
+  @include font(13px, 500, 13px, $namespace, $onlyVars);
+}
