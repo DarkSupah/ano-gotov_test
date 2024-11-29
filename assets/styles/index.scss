@@ -1,0 +1,36 @@
+@use 'reset' as *;
+
+@use 'colors' as *;
+@use 'visibility' as *;
+@use 'typography' as *;
+@use 'fonts' as *;
+@use 'transitions' as *;
+
+* {
+  font-family: "TT Interfaces", sans-serif;
+}
+
+html {
+  background: var(--c-background);
+  color: var(--c-grey-100);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--c-grey-500);
+  margin: 0;
+}
+
+.container {
+  box-sizing: border-box;
+
+  margin: 0 auto;
+
+  width: 100%;
+  max-width: var(--container-width, 1569px);
+  padding: var(--container-padding, 0 20px);
+}
+
+.icon {
+  font-size: var(--icon-size);
+}

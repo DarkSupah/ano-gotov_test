@@ -1,0 +1,23 @@
+.slide {
+  &-enter-from, &-leave-to {
+    opacity: 0;
+  }
+
+  &-enter-from {
+    transform: translateX(-30%);
+  }
+
+  &-leave-to {
+    transform: translateX(30%);
+  }
+
+  &-leave-from, &-enter-to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &-enter-active, &-leave-active {
+    transition: opacity 0.5s, transform 0.5s;
+    will-change: opacity, transform;
+  }
+}

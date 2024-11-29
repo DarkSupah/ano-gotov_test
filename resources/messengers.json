@@ -1,0 +1,22 @@
+[
+  {
+    "id": "tg",
+    "name": "Telegram",
+    "icon": "images/messengers/telegram.svg",
+    "link": "https://google.com",
+    "bonus": true
+  },
+  {
+    "id": "wa",
+    "name": "Whatsapp",
+    "icon": "images/messengers/whatsapp.svg",
+    "link": "https://google.com",
+    "confirmed": true
+  },
+  {
+    "id": "vk",
+    "name": "Вконтакте",
+    "icon": "images/messengers/vk.svg",
+    "link": "https://google.com"
+  }
+]

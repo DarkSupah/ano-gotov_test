@@ -1,0 +1,15 @@
+@use 'dev/colors' as *;
+
+:root {
+  --c-background: #{$c-background};
+  --c-warning: #{$c-warning};
+
+  --c-green-100: #{$c-green-100};
+  --c-green-500: #{$c-green-500};
+
+  --c-grey-100: #{$c-grey-100};
+  --c-grey-500: #{$c-grey-500};
+  --c-grey-700: #{$c-grey-700};
+
+  --c-white: #{$c-white};
+}

@@ -1,0 +1,90 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "vue/setup-compiler-macros": true,
+    "amd": true
+  },
+  "extends": [
+    "plugin:vue/vue3-essential",
+    "plugin:vue/essential",
+    "eslint:recommended",
+    "plugin:prettier/recommended"
+  ],
+  "overrides": [],
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "parser": "@typescript-eslint/parser",
+    "extraFileExtensions": [".vue"],
+    "sourceType": "module"
+  },
+  "plugins": ["vue", "@typescript-eslint"],
+  "rules": {
+    "no-useless-escape": "off",
+    "no-unused-vars": "off",
+    "indent": [
+      "off",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "quotes": ["error", "double"],
+    "semi": ["error", "always"],
+    "react/react-in-jsx-scope": "off",
+    "linebreak-style": 0,
+    "no-var": "error",
+    "prefer-const": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "vue/multi-word-component-names": "off",
+    "vue/no-v-model-argument": "off",
+    "vue/attributes-order": ["error"],
+    "vue/component-name-in-template-casing": [
+      "error",
+      "kebab-case",
+      {
+        "registeredComponentsOnly": true
+      }
+    ],
+    "vue/component-definition-name-casing": ["error", "PascalCase"],
+    "vue/match-component-file-name": [
+      "error",
+      {
+        "extensions": ["vue"],
+        "shouldMatchCase": false
+      }
+    ],
+    "vue/no-custom-modifiers-on-v-model": "off",
+    "no-fallthrough": "off",
+    "vue/no-multiple-template-root": "off"
+  },
+  "globals": {
+    "process": true,
+    "ref": true,
+    "reactive": true,
+    "watch": true,
+    "onMounted": true,
+    "computed": true,
+    "onUnmounted": true,
+    "definePageMeta": true,
+    "unref": true,
+    "toRef": true,
+    "defineEventHandler": true,
+    "readBody": true,
+    "createError": true,
+    "navigateTo": true,
+    "useCookie": true,
+    "useAsyncData": true,
+    "deleteCookie": true,
+    "setCookie": true,
+    "sendRedirect": true,
+    "useDevice": true
+  }
+}
