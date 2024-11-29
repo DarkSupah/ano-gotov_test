@@ -21,14 +21,14 @@
       сообщение
     </span>
 
-    <hr
+    <hr class="confirm-messenger__splitter" />
+
+    <bonus-badge
       :class="[
-        'confirm-messenger__splitter',
-        { 'confirm-messenger__splitter--no-bonus': !item.bonus },
+        'confirm-messenger__bonus',
+        { 'confirm-messenger__bonus--visible': item.bonus },
       ]"
     />
-
-    <bonus-badge v-if="item.bonus" />
 
     <ui-button
       class="confirm-messenger__link"
@@ -44,11 +44,12 @@
 
 <script setup lang="ts">
 import type { Messenger } from "~/entities/messenger";
+
 import BonusBadge from "~/components/atoms/bonus-badge.vue";
 import UiButton from "~/components/atoms/ui-button.vue";
 
 interface Props {
-  item: Omit<Messenger, "confirmed">;
+  item: Omit<Messenger, "confirmed"> | null;
 }
 
 withDefaults(defineProps<Props>(), {
@@ -61,6 +62,10 @@ withDefaults(defineProps<Props>(), {
   border-radius: 28px;
   background: var(--c-white);
   padding: 16px;
+
+  @include mobile-up {
+    padding: 32px;
+  }
 
   &__header {
     display: flex;
@@ -79,10 +84,6 @@ withDefaults(defineProps<Props>(), {
 
   &__splitter {
     margin: 16px 0;
-
-    &--no-bonus {
-      margin: 16px 0 48px 0;
-    }
   }
 
   &__title {
@@ -101,6 +102,14 @@ withDefaults(defineProps<Props>(), {
 
     @include mobile-up {
       margin-top: 18px;
+    }
+  }
+
+  &__bonus {
+    visibility: hidden;
+
+    &--visible {
+      visibility: visible;
     }
   }
 }

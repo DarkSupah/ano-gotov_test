@@ -14,8 +14,8 @@
       </span>
 
       <ui-badge
-        class="messenger-item__badge"
         v-if="item.confirmed"
+        class="messenger-item__badge"
         type="success"
       >
         Уже подтверждён
@@ -25,6 +25,12 @@
     <hr class="messenger-item__splitter" />
 
     <radio-group
+      :id="item.id + '-option'"
+      :rules="
+        item.confirmed
+          ? null
+          : { required: { message: 'Выберите один из вариантов' } }
+      "
       class="messenger-item__options"
       :options="options"
       :model-value="modelValue"
@@ -36,22 +42,23 @@
 
 <script setup lang="ts">
 import type { Messenger } from "~/entities/messenger";
-import RadioGroup from "~/components/molecules/radio-group.vue";
+
+import RadioGroup, {
+  type RadioOption,
+} from "~/components/molecules/radio-group.vue";
 import UiBadge from "~/components/atoms/ui-badge.vue";
 
 interface Props {
-  item: Omit<Messenger, "bonus", "link">;
-  modelValue?: boolean;
+  item: Omit<Messenger, "bonus" | "link">;
+  modelValue: boolean | null | undefined;
   disabled?: boolean;
 }
 
 withDefaults(defineProps<Props>(), {
-  item: null,
-  modelValue: null,
   disabled: false,
 });
 
-const options = [
+const options: RadioOption[] = [
   {
     title: "Пользуюсь",
     value: true,
@@ -100,15 +107,6 @@ const options = [
     @include h5;
 
     margin-left: 12px;
-  }
-
-  &__options {
-    display: flex;
-    align-items: center;
-
-    & > *:not(:last-child) {
-      margin-right: 24px;
-    }
   }
 
   &__badge {

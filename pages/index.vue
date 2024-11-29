@@ -1,41 +1,33 @@
 <template>
   <div class="index-page">
     <div class="container">
-      <transition name="slide" :duration="500" mode="out-in">
+      <transition name="slide" :duration="350" mode="out-in">
         <component :is="view" />
       </transition>
-
-      <div class="index-page__actions">
-        <ui-button
-          v-if="step.canSkip"
-          variant="outline"
-          color="primary"
-          @click="skip()"
-        >
-          Пропустить
-        </ui-button>
-        <ui-button color="primary" variant="filled" @click="step.next()">
-          Далее
-        </ui-button>
-      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { pageContextKey } from "~/injection-keys";
-import { type Component, type Ref, type ComputedRef } from "vue";
+import {
+  type Ref,
+  type ComputedRef,
+  type DefineComponent,
+  shallowRef,
+  ref,
+  provide,
+  computed,
+} from "vue";
 import type { Messenger } from "~/entities/messenger";
 
 import { getMessengers } from "~/api/messengers";
-import UiButton from "~/components/atoms/ui-button.vue";
 
 import SelectMessengers from "~/components/pages/select-messengers.vue";
 import ConfirmMessengers from "~/components/pages/confirm-messengers.vue";
 
 export interface Step {
-  component: Component;
-  canSkip?: boolean;
+  component: DefineComponent;
   next?: () => {};
   back?: () => {};
 }
@@ -46,7 +38,7 @@ export interface PageData {
 
 export interface PageContext {
   pageData: Ref<PageData>;
-  messengers: ComputedRef<Messenger[]>;
+  messengers: ComputedRef<Messenger[] | null>;
   step: Ref<Step>;
 }
 
@@ -66,7 +58,6 @@ const pageData = ref<PageData>({
 const STEPS: Record<string, Step> = {
   "select-messengers": {
     component: SelectMessengers,
-    canSkip: true,
     next: () => {
       step.value = STEPS["confirm-messengers"];
     },
@@ -87,13 +78,7 @@ provide(pageContextKey, {
   messengers: computed(() => messengers.value),
 });
 
-const view: ComputedRef<Component> = computed<Component>(
-  () => step.value?.component
-);
-
-const skip = () => {
-  console.log("skip not implemented");
-};
+const view = computed<DefineComponent>(() => step.value?.component);
 </script>
 
 <style lang="scss" scoped>
@@ -108,32 +93,12 @@ const skip = () => {
     padding: 43px 0 112px;
   }
 
-  &__actions {
-    --button-width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    margin-top: 48px;
-
-    @include mobile-up {
-      flex-direction: row;
-
-      & > *:not(:last-child) {
-        margin-right: 24px;
-      }
-    }
-
-    & > *:not(:last-child) {
-      margin-bottom: 12px;
-    }
-  }
-
   @include tablet-only {
     --container-width: 503px;
   }
 
   @include tablet-up {
-    --container-width: 1569px;
+    --container-width: 1609px;
   }
 }
 </style>

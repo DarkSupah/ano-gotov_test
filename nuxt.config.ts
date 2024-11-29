@@ -1,11 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
+// eslint-disable-next-line no-undef
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   modules: ["@nuxt/image", "@nuxt/icon"],
   css: ["@/assets/styles/index.scss"],
 
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   ssr: false,
   components: true,
 
@@ -40,6 +41,7 @@ export default defineNuxtConfig({
   icon: {
     provider: "server",
     class: "icon",
+    mode: "svg",
     customCollections: [
       {
         prefix: "icon",

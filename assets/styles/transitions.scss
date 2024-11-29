@@ -17,7 +17,8 @@
   }
 
   &-enter-active, &-leave-active {
-    transition: opacity 0.5s, transform 0.5s;
+    transition: opacity 0.35s, transform 0.35s;
     will-change: opacity, transform;
+    pointer-events: none;
   }
 }

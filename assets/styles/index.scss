@@ -15,15 +15,22 @@ html {
   color: var(--c-grey-100);
 }
 
+body {
+  color: var(--c-grey-100);
+}
+
 hr {
   border: none;
   border-top: 1px solid var(--c-grey-500);
   margin: 0;
 }
 
-.container {
-  box-sizing: border-box;
+a {
+  text-decoration: none;
+  color: var(--c-grey-100);
+}
 
+.container {
   margin: 0 auto;
 
   width: 100%;

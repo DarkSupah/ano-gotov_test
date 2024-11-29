@@ -6,8 +6,9 @@
       width="32"
       height="32"
       loading="lazy"
+      draggable="false"
     />
-    <span class="bonus-badge__text"> Бонусные баллы будут н ачислены! </span>
+    <span class="bonus-badge__text"> Бонусные баллы будут начислены! </span>
   </div>
 </template>
 
