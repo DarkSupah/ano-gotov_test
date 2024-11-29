@@ -4,11 +4,11 @@ WORKDIR /app
 
 COPY package.json yarn.lock ./
 
-CMD ["npm", "run", "install"]
+RUN yarn
 
 COPY . .
 
-CMD ["npm", "run", "build"]
+RUN yarn build
 
 FROM node:18-bullseye-slim as runner
 EXPOSE 3000
